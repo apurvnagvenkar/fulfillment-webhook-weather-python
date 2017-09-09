@@ -24,6 +24,7 @@ from urllib.error import HTTPError
 
 import json
 import os
+import time
 
 from flask import Flask
 from flask import request
@@ -97,7 +98,7 @@ def makeWebhookResult(data):
         return {}
 
     # print(json.dumps(item, indent=4))
-
+    time.sleep(10)
     speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
              ", the temperature is " + condition.get('temp') + " " + units.get('temperature')
 
