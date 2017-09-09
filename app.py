@@ -52,7 +52,7 @@ def webhook():
         r = make_response(res)
         r.headers['Content-Type'] = 'application/json'
     
-        return r
+        yield r
     print('ASDFGHHJKL')
     res = processRequest(req)
 
