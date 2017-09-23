@@ -40,20 +40,7 @@ def webhook():
 
     print("Request:")
     print(json.dumps(req, indent=4))
-    res = {
-        "speech": 'Please wait!!',
-        "displayText": "Pease wait!!",
-        # "data": data,
-        # "contextOut": [],
-        "source": "apiai-weather-webhook-sample"
-    }
-    if res:
-        res = json.dumps(res, indent=4)
-        r = make_response(res)
-        r.headers['Content-Type'] = 'application/json'
-    
-        yield r
-    print('ASDFGHHJKL')
+
     res = processRequest(req)
 
     res = json.dumps(res, indent=4)
