@@ -61,6 +61,8 @@ def processRequest(req):
         result = urlopen(yql_url).read()
         data = json.loads(result)
         res = makeWebhookResult(data)
+        print ('res1: ')
+        print (res)
         return res
 
     elif req.get("result").get("action") == "weather_forecasting.weather_forecasting-yes":
@@ -71,6 +73,8 @@ def processRequest(req):
         result = urlopen(yql_url).read()
         data = json.loads(result)
         res = makeWebhookResultDelhi(data)
+        print ('res2')
+        print (res)
         return res
 
     elif req.get("result").get("action") == "weather_forecasting.weather_forecasting-no":
@@ -96,7 +100,7 @@ def makeYqlQuery(req):
     return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
 
 def makeYqlQueryDelhi():
-    city='Delhi'
+    city='delhi'
 
     return "select * from weather.forecast where woeid in (select woeid from geo.places(1) where text='" + city + "')"
 
@@ -126,7 +130,7 @@ def makeWebhookResult(data):
     # print(json.dumps(item, indent=4))
     speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
              ", the temperature is " + condition.get('temp') + " " + units.get('temperature') + \
-        "\nDo you want to know temprature of Delhi?"
+        "Do you want to know temprature of Delhi?"
 
     print("Response:")
     print(speech)
@@ -165,7 +169,7 @@ def makeWebhookResultDelhi(data):
     # print(json.dumps(item, indent=4))
     speech = "Today in " + location.get('city') + ": " + condition.get('text') + \
              ", the temperature is " + condition.get('temp') + " " + units.get('temperature') + \
-        "\nTake care"
+        ",Take care"
 
     print("Response:")
     print(speech)
