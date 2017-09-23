@@ -66,6 +66,7 @@ def processRequest(req):
 
 def makeYqlQuery(req):
     result = req.get("result")
+    print(request)
     parameters = result.get("parameters")
     city = parameters.get("geo-city")
     if city is None:
